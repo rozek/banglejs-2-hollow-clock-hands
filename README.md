@@ -2,7 +2,7 @@
 
 draws (optionally filled) hollow hands for an analog clock on a Bangle.js 2
 
-This module draws (optionally filled) hollow hands (with a small bolt in the center) for an analog clock running on a [Bangle.js 2](https://www.espruino.com/Bangle.js2).
+This module draws (optionally filled) hollow hands (with a small bolt in the center) for an analog clock running on a [Bangle.js 2](https://www.espruino.com/Bangle.js2). They are based on an idea of forum user [HughB](http://forum.espruino.com/profiles/167235/) (see [this discussion](http://forum.espruino.com/conversations/371242/))
 
 ![](Demo.png)
 
