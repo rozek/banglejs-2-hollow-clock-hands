@@ -2,25 +2,40 @@
 
 draws (optionally filled) hollow hands for an analog clock on a Bangle.js 2
 
-This module draws (optionally filled) hollow hands for an analog clock running on a [Bangle.js 2](https://www.espruino.com/Bangle.js2).
+This module draws (optionally filled) hollow hands (with a small bolt in the center) for an analog clock running on a [Bangle.js 2](https://www.espruino.com/Bangle.js2). They are based on an idea of forum user [HughB](http://forum.espruino.com/profiles/167235/) (see [this discussion](http://forum.espruino.com/conversations/371242/))
+
+![](Demo.png)
 
 ## Usage ##
 
 Within a clock implementation, the module may be used as follows:
 
 ```
-let ClockHands = require('https://raw.githubusercontent.com/rozek/banglejs-2-hollow-clock-hands/main/ClockHands.js');
+let Clockwork = require(...);
+Clockwork.windUp({
+  hands:require('https://raw.githubusercontent.com/rozek/banglejs-2-hollow-clock-hands/main/ClockHands.js'),
+  ...
+});
 ```
 
-Whenever needed, the module's exported `draw` method will then be invoked as follows:
+## Example ##
+
+The following code shows a complete example for a (still simple) analog clock using these clock hands:
 
 ```
-ClockHands.draw(Settings, CenterX,CenterY, outerRadius, Hours,Minutes,Seconds);
+let Clockwork = require('https://raw.githubusercontent.com/rozek/banglejs-2-simple-clockwork/main/Clockwork.js');
+
+Clockwork.windUp({
+  face: require('https://raw.githubusercontent.com/rozek/banglejs-2-four-fold-clock-face/main/ClockFace.js'),
+  hands:require('https://raw.githubusercontent.com/rozek/banglejs-2-hollow-clock-hands/main/ClockHands.js'),
+},{
+  Foreground:'#000000', Background:'#FFFFFF', Seconds:'#FF0000', FillColor:'#FFFF00'
+});
 ```
 
-The `Seconds` argument is optional and may be missing (or set to `null` or `undefined`) - in that case no seconds hands should be drawn.
+`Settings.Seconds` is optional and specifies the color in which the second hand should be drawn - if it is missing, `null` or `undefined`) no second hand will be drawn.
 
-`Settings.FillColor` controls whether hour and mionute hands will be filled or not:
+`Settings.FillColor` specifies whether hour and minute hands will be filled or not:
 
 * `null`, `undefined` or missing: hands will *not* be filled,
 * `'Theme'`: hands will be filled with the current theme's foreground highlight color (`theme.fgH`)
